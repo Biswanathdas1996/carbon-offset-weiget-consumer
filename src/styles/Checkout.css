@@ -350,8 +350,30 @@ header .count {
   text-align: center;
   height: 400px;
 }
-.header-wrapper-emirate {
-  background: url("../assets/images/new-hours-requirements_banner.jpg");
+.header-wrapper-sample3 {
+  background: url("../assets/images/plant-based-food-mc-220323-02-273c7b.jpg");
+  /* background-position: top left; */
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+  height: 400px;
+}
+.header-wrapper-sample4 {
+  background: url("../assets/images/6470e5c1-dc86-4dfc-8c4c-12b23dec4c80.jpg");
+  /* background-position: top left; */
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+  height: 400px;
+}
+.header-wrapper-sample2 {
+  background: url("../assets/images/JTT_230_aspect16x9.png");
   /* background-position: top left; */
   position: relative;
   background-size: cover;

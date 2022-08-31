@@ -4,7 +4,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import PwcLogo from "../assets/images/nft.png";
 import "../styles/Checkout.css";
 import ImgGif from "../assets/images/aviation-scaled.jpg";
-
+import swal from "sweetalert";
+import Backdrop from "@mui/material/Backdrop";
 export const PaymentURI = "https://nft-payment.herokuapp.com/payment";
 
 const displayRazorpayForWiget = async (price, purchasetransction, title) => {
@@ -110,7 +111,13 @@ function Summary({
   const [carbonOffsetAmount, setCarbonOffsetAmount] = React.useState(0);
   const [isDoingPayment, setIsDoingPayment] = React.useState(false);
   const [walletAddress, setWalletAddress] = React.useState(null);
-
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
   const total = subTotal - discount + tax + carbonOffsetAmount;
   const productQty = products[0]?.quantity;
 
@@ -120,8 +127,7 @@ function Summary({
     await displayRazorpayForWiget(
       total,
       async function (response) {
-        console.log("Call the token transfer api");
-
+        handleToggle();
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -141,7 +147,14 @@ function Summary({
           requestOptions
         )
           .then((response) => response.json())
-          .then((result) => alert("your ticket confirmed successfully"))
+          .then((result) => {
+            handleClose();
+            swal("Success!", "Your ticket hes been confirmed", "success").then(
+              (value) => {
+                window.location.reload();
+              }
+            );
+          })
           .catch((error) => console.log("error", error));
       },
       title
@@ -166,6 +179,14 @@ function Summary({
 
   return (
     <section className="container">
+      <div>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </div>
       <div className="promotion" style={{ marginBottom: 30 }}>
         {carbonOffsetAmount === 0 && (
           <iframe
