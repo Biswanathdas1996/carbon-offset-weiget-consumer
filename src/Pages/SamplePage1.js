@@ -4,7 +4,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import PwcLogo from "../assets/images/nft.png";
 import "../styles/Checkout.css";
 import ImgGif from "../assets/images/aviation-scaled.jpg";
-import Card from "@mui/material/Card";
 
 export const PaymentURI = "https://nft-payment.herokuapp.com/payment";
 
